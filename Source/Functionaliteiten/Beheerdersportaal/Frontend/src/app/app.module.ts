@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SharedModule, DataTableModule } from 'primeng/primeng';
+
 import { RootComponent } from './shared/root/root.component';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
@@ -9,10 +11,12 @@ import { FooterComponent } from './shared/layout/footer/footer.component';
   declarations: [
     RootComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
-    BrowserModule    
+    BrowserModule,
+    SharedModule,
+    DataTableModule
   ],
   providers: [],
   bootstrap: [RootComponent]

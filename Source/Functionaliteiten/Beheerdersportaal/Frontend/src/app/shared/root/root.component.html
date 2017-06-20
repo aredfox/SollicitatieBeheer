@@ -1,9 +1,14 @@
 <app-header></app-header>
 <div id="content" class="container">
-  <div class="mt-3">
-    <h1>Sticky footer with fixed navbar</h1>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Vacatures</h1>
+    </div>
+    <div class="col-lg-12">
+      <p-dataTable [value]="vacatures" tableStyleClass="table table-hover">
+        <p-column *ngFor="let column of columns" [field]="column.field" [header]="column.header" [sortable]="column.sortable"></p-column>
+      </p-dataTable>
+    </div>
   </div>
-  <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar
-    has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
 </div>
 <app-footer></app-footer>
