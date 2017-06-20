@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RootComponent {
   vacatures: any[];
   columns: any[];
+  vacatureFuncties: string[];
 
   ngOnInit() {
     this.vacatures = [
@@ -16,12 +17,6 @@ export class RootComponent {
       { nummer: 15512, functie: 'Klusjesman', afdeling: 'Technische Dienst' },
       { nummer: 15520, functie: 'Ombuds', afdeling: 'Personeelsdienst' }
     ];
-
-    this.columns = [
-      { field: 'nummer', header: 'Nummer', sortable: true },
-      { field: 'functie', header: 'Functie', sortable: true },
-      { field: 'afdeling', header: 'Afdeling', sortable: true },
-      { field: 'omschrijving', header: 'Omschrijving', sortable: false }
-    ];
+    this.vacatureFuncties = this.vacatures.map(v => v.functie);
   }
 }

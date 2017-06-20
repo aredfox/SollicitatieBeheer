@@ -1,12 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~font-awesome/css/font-awesome.css";
 
-th {                        
+th {   
+    background-color: #f6f6f6;                     
     span.ui-column-title {   
         user-select: none;
     }
     &.ui-sortable-column {
         cursor: pointer;
-        user-select: none;   
+        user-select: none;        
     } 
+}
+
+input.ui-column-filter {  
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  width: 100%;
+  padding: 2px;
+  margin-top: 8px;
 }
