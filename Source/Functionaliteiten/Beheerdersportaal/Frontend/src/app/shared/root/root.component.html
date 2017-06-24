@@ -6,31 +6,7 @@
         <li class="active">Vacatures</li>
       </ul>
     </div>
-    <div class="col-lg-12">
-      <h1>Vacatures</h1>
-      <div class="panel panel-default">
-        <div class="panel-heading clearfix">
-          <div class="pull-right">
-            <a href="#" class="btn btn-default btn-sm">Toevoegen</a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <p-dataTable [value]="vacatures" tableStyleClass="table table-hover">
-            <p-column field="nummer" header="Nummer" [sortable]="true" [filter]="true" filterPlaceholder="zoek"></p-column>
-            <p-column field="functie" header="Functie" [sortable]="true" [filter]="true" filterMatchMode="contains" filterPlaceholder="zoek"></p-column>
-            <p-column field="afdeling" header="Afdeling" [sortable]="true" [filter]="true" filterMatchMode="contains" filterPlaceholder="zoek"></p-column>
-            <p-column field="omschrijving" header="Omschrijving" [sortable]="true" [filter]="true" filterMatchMode="contains" filterPlaceholder="zoek"></p-column>
-            <p-column styleClass="col-button">
-              <ng-template let-vacature="rowData" pTemplate="body">
-                <a href="#edit-vacature-{{vacature.nummer}}" title="Bewerken" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></a>
-                <a href="#remove-vacature-{{vacature.nummer}}" title="Verwijderen" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
-              </ng-template>
-            </p-column>
-          </p-dataTable>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-1"></div>
   </div>
+  <app-vacatures></app-vacatures>
 </div>
 <app-footer></app-footer>
