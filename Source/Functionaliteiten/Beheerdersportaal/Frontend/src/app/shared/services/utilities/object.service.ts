@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { IPropertySelector } from '../../models/property-selector.model';
 
 @Injectable()
 export class ObjectService {
-    extractPropertyNames<T>(propertySelectors: ((x: T) => any | string)[]): string[] {
+    extractPropertyNames<T>(propertySelectors: IPropertySelector<T>[]): string[] {
         let propertyNames: string[] = [];
 
         propertySelectors.forEach(propertySelector => {

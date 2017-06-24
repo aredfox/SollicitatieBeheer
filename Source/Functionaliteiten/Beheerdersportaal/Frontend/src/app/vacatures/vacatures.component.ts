@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Vacature } from './vacature.model';
 import { SelectList } from '../shared/models/select-list.model';
+import { IPropertySelector } from '../shared/models/property-selector.model';
 import { ObjectService } from '../shared/services/utilities/object.service';
 import { SearchService } from '../shared/services/utilities/search.service';
 
@@ -52,7 +53,7 @@ export class VacaturesComponent {
     this.onFilter();
   }
 
-  private searchFilter(vacature: Vacature, searchTerm: string, propertySelectors: ((x: Vacature) => any | string)[]): boolean {
+  private searchFilter(vacature: Vacature, searchTerm: string, propertySelectors: IPropertySelector<Vacature>[]): boolean {
     if (!this.vacatureProperties) {
       this.vacatureProperties = this.objectService.extractPropertyNames(propertySelectors);
     }
