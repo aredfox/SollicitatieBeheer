@@ -1,5 +1,10 @@
-<h4 class="list-group-item-heading">
-  <span>{{vacature.functie}}</span> &nbsp; <span style="text-transform: uppercase" class="text-muted">{{vacature.afdeling}}</span></h4>
+<h4 class="list-group-item-heading pull-left">
+  <span>{{vacature.functie}}</span> <span class="text-muted">{{vacature.afdeling}}</span>
+</h4>
+<div class="button-row pull-right">
+  <a class="btn btn-default btn-xs" title="Bewerken"><span class="fa fa-pencil"></span></a>
+  <a class="btn btn-danger btn-xs" title="Verwijderen"><span class="fa fa-remove"></span></a>
+</div>
 <table class="table table-condensed table-info-detail">
   <tbody>
     <tr *ngIf="vacature.omschrijving !== ''">

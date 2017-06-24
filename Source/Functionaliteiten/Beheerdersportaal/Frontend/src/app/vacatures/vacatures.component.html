@@ -28,6 +28,14 @@
               </select>
             </div>
           </div>
+          <hr/>
+          <div class="form-group form-group-sm">
+            <label class="col-sm-3 control-label" for="zoeken">Zoeken</label>
+            <div class="col-sm-9">
+              <input id="zoeken" type="text" [(ngModel)]="zoekparameter" (keyup)="onFilter()" placeholder="zoek in alle velden..." [ngModelOptions]="{standalone: true}"
+              />
+            </div>
+          </div>
         </form>
       </div>
     </div>

@@ -11,6 +11,7 @@ export class VacaturesComponent {
   vacatures: Vacature[];
 
   filteredVacatures: Vacature[];
+  zoekparameter: string;
   afdelingen: SelectList<string>;
   functies: SelectList<string>;
 
@@ -33,6 +34,29 @@ export class VacaturesComponent {
     this.filteredVacatures =
       this.vacatures
         .filter(v => this.afdelingen.selectedItem === '*' || v.afdeling === this.afdelingen.selectedItem)
-        .filter(v => this.functies.selectedItem === '*' || v.functie === this.functies.selectedItem);
+        .filter(v => this.functies.selectedItem === '*' || v.functie === this.functies.selectedItem)
+        .filter(v => this.searchFilter(v, this.zoekparameter, [v => v.nummer, v => v.afdeling, v => v.functie, v => v.omschrijving]));
+  }
+
+  private searchFilter(vacature: Vacature, q: string, propertySelector: ((x: Vacature) => any | string)[]): boolean {
+    if (q === '') return true;
+
+    q = q.trim().toLowerCase();
+
+    let properties: string[] = [];
+    propertySelector.forEach(propertySelector => {
+      const functionBody = propertySelector.toString();
+      const expression = functionBody.slice(functionBody.indexOf('{') + 1, functionBody.lastIndexOf('}'));
+      const propertyName = expression.slice(expression.indexOf('.') + 1, expression.lastIndexOf(';'));
+      properties.push(propertyName.trim());
+    });    
+
+    for (let property of properties) {
+      if (vacature[property.toString()].toString().toLowerCase().indexOf(q) >= 0) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }
