@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Vacature } from './vacature.model';
 import { SelectList } from '../shared/models/select-list.model';
+import { ObjectService } from '../shared/services/utilities/object.service';
 
 @Component({
   selector: 'app-vacatures',
@@ -12,10 +13,11 @@ export class VacaturesComponent {
 
   filteredVacatures: Vacature[];
   zoekparameter: string;
+  vacatureProperties: string[];
   afdelingen: SelectList<string>;
   functies: SelectList<string>;
 
-  constructor() {
+  constructor(private objectService: ObjectService) {
     this.vacatures = [
       { nummer: 15486, functie: 'Begeleider', afdeling: 'OOOC Potgieter', omschrijving: '' },
       { nummer: 15492, functie: 'Begeleider', afdeling: 'OOOC Jacob Jordaens', omschrijving: 'Et harum quidem rerum facilis est et expedita distinctio.' },
@@ -38,21 +40,17 @@ export class VacaturesComponent {
         .filter(v => this.searchFilter(v, this.zoekparameter, [v => v.nummer, v => v.afdeling, v => v.functie, v => v.omschrijving]));
   }
 
-  private searchFilter(vacature: Vacature, q: string, propertySelector: ((x: Vacature) => any | string)[]): boolean {
+  private searchFilter(vacature: Vacature, q: string, propertySelectors: ((x: Vacature) => any | string)[]): boolean {
     if (q === '') return true;
 
     q = q.trim().toLowerCase();
 
-    let properties: string[] = [];
-    propertySelector.forEach(propertySelector => {
-      const functionBody = propertySelector.toString();
-      const expression = functionBody.slice(functionBody.indexOf('{') + 1, functionBody.lastIndexOf('}'));
-      const propertyName = expression.slice(expression.indexOf('.') + 1, expression.lastIndexOf(';'));
-      properties.push(propertyName.trim());
-    });    
+    if (!this.vacatureProperties) {
+      this.vacatureProperties = this.objectService.extractPropertyNames(propertySelectors);
+    }
 
-    for (let property of properties) {
-      if (vacature[property.toString()].toString().toLowerCase().indexOf(q) >= 0) {
+    for (let property of this.vacatureProperties) {
+      if (vacature[property].toString().toLowerCase().indexOf(q) >= 0) {
         return true;
       }
     }
