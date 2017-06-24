@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { RootComponent } from './shared/root/root.component';
+import { RootComponent } from './root/root.component';
 
-import { LayoutModule } from './shared/layout/layout.module';
+import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './layout/layout.module';
 import { VacaturesModule } from './vacatures/vacatures.module';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { VacaturesModule } from './vacatures/vacatures.module';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     LayoutModule,
     VacaturesModule
   ],

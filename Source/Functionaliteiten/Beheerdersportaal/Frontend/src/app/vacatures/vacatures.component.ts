@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Vacature } from './vacature.model';
-import { SelectList } from '../shared/select-list.model';
+import { SelectList } from '../shared/models/select-list.model';
 
 @Component({
   selector: 'app-vacatures',
