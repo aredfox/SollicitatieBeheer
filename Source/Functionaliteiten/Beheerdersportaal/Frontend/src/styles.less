@@ -1,22 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~font-awesome/css/font-awesome.css";
 
-th {   
-    background-color: #f6f6f6;                     
-    span.ui-column-title {   
-        user-select: none;
+.panel-heading {
+    h1, h2, h3, h4, h5, h6 {
+        padding: 0;
+        margin: 8px 8px 8px 0;
     }
-    &.ui-sortable-column {
-        cursor: pointer;
-        user-select: none;        
-    } 
+
+    .panel-heading-buttons {
+        .btn {
+            margin: 6px 0px 6px 6px;
+        }
+    }    
 }
 
-input.ui-column-filter {  
-  display: block;
-  font-weight: normal;
-  font-size: 14px;
-  width: 100%;
-  padding: 2px;
-  margin-top: 8px;
+table.table-info-detail {
+    border: 0;
+    margin: 0;
+    tr {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        td:first-child {
+            width: 100px;
+        }
+        td {
+            border: 0px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    td.info-detail-label {
+        font-weight: bold;
+    }
+    td.info-detail-content {        
+    }
 }

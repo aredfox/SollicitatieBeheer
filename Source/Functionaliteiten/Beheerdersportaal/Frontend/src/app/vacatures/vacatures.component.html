@@ -1,14 +1,29 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1>Vacatures</h1>
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        <div class="pull-right">
+        <h3 class="pull-left">Vacatures</h3>
+        <div class="pull-right panel-heading-buttons">
           <a href="#" class="btn btn-default btn-sm">Toevoegen</a>
         </div>
       </div>
-      <div class="panel-body">
-      </div>
+      <ul class="list-group">
+        <a *ngFor="let vacature of vacatures" href="#vacature-detail-{vacature.nummer}" class="list-group-item">
+          <h4 class="list-group-item-heading">{{vacature.functie}} <span class="text-muted">{{vacature.afdeling}}</span></h4>
+          <table class="table table-condensed table-info-detail">
+            <tbody>
+              <tr *ngIf="vacature.omschrijving !== ''">
+                <td class="info-detail-label">Omschrijving:</td>
+                <td class="info-detail-content">{{vacature.omschrijving}}</td>
+              </tr>
+              <tr *ngIf="vacature.nummer !== ''">
+                <td class="info-detail-label">Nummer:</td>
+                <td class="info-detail-content">{{vacature.nummer}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </a>
+      </ul>
     </div>
   </div>
   <div class="col-lg-1"></div>
