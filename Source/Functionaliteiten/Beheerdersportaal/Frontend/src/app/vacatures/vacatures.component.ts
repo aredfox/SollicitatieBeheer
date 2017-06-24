@@ -39,6 +39,12 @@ export class VacaturesComponent {
         .filter(v => this.functies.selectedItem === '*' || v.functie === this.functies.selectedItem)
         .filter(v => this.searchFilter(v, this.zoekparameter, [v => v.nummer, v => v.afdeling, v => v.functie, v => v.omschrijving]));
   }
+  onFilterReset() {
+    this.afdelingen.selectedItem = '*';
+    this.functies.selectedItem = '*';
+    this.zoekparameter = '';
+    this.onFilter();
+  }
 
   private searchFilter(vacature: Vacature, q: string, propertySelectors: ((x: Vacature) => any | string)[]): boolean {
     if (q === '') return true;
