@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Vacature } from './vacature.model';
 
 @Component({
   selector: 'app-vacatures',
@@ -6,13 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./vacatures.component.less']
 })
 export class VacaturesComponent {
-  vacatures: any[];
+  vacatures: Vacature[];
+
+  filteredVacatures: Vacature[];
   afdelingen: string[];
   selectedAfdeling: string;
   functies: string[];
   selectedFunctie: string;
-
-  filteredVacatures: any[];
 
   constructor() {
     this.vacatures = [
@@ -22,9 +23,9 @@ export class VacaturesComponent {
       { nummer: 15520, functie: 'Ombuds', afdeling: 'Personeelsdienst', omschrijving: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.' },
       { nummer: 15584, functie: 'Tuinman', afdeling: 'Technische Dienst', omschrijving: '' },
     ];
-    this.afdelingen = this.createSelectList(this.vacatures, 'afdeling');
+    this.afdelingen = this.createSelectList(this.vacatures, v => v.afdeling);
     this.selectedAfdeling = '*';
-    this.functies = this.createSelectList(this.vacatures, 'functie');
+    this.functies = this.createSelectList(this.vacatures, v => v.functie);
     this.selectedFunctie = '*';
 
     this.filteredVacatures = this.vacatures;
@@ -37,15 +38,15 @@ export class VacaturesComponent {
         .filter(v => this.selectedFunctie === '*' || v.functie === this.selectedFunctie);
   }
 
-  private createSelectList(array: any[], property: string): string[] {
+  private createSelectList<T, TResult>(array: T[], propertySelector: (x: T) => TResult | string): TResult[] {
     return this.distinct(array
-      .map(x => x[property])
+      .map(propertySelector)
       .concat('*'))
       .sort();
   }
 
-  private distinct = function (array: any[]): any[] {
-    return array.reduce(function (p, c) {
+  private distinct(array: any[]): any[] {
+    return array.reduce((p, c) => {
       if (p.indexOf(c) < 0) p.push(c);
       return p;
     }, []);
