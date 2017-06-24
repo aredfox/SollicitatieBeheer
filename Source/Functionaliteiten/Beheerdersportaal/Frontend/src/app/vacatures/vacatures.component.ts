@@ -22,6 +22,7 @@ export class VacaturesComponent {
       { nummer: 15520, functie: 'Ombuds', afdeling: 'Personeelsdienst', omschrijving: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.' },
       { nummer: 15584, functie: 'Tuinman', afdeling: 'Technische Dienst', omschrijving: '' },
     ];
+
     this.afdelingen = SelectList.createSelectList(this.vacatures, v => v.afdeling);
     this.functies = SelectList.createSelectList(this.vacatures, v => v.functie);
 
