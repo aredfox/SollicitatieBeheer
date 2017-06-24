@@ -22,19 +22,9 @@ export class VacaturesComponent {
       { nummer: 15520, functie: 'Ombuds', afdeling: 'Personeelsdienst', omschrijving: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.' },
       { nummer: 15584, functie: 'Tuinman', afdeling: 'Technische Dienst', omschrijving: '' },
     ];
-    this.afdelingen =
-      this.distinct(
-        this.vacatures
-          .map(v => v.afdeling)
-          .concat('*'))
-        .sort();
+    this.afdelingen = this.createSelectList(this.vacatures, 'afdelingen');
     this.selectedAfdeling = '*';
-    this.functies =
-      this.distinct(
-        this.vacatures
-          .map(v => v.functie)
-          .concat('*'))
-        .sort();
+    this.functies = this.createSelectList(this.vacatures, 'functies');
     this.selectedFunctie = '*';
 
     this.filteredVacatures = this.vacatures;
@@ -45,6 +35,13 @@ export class VacaturesComponent {
       this.vacatures
         .filter(v => this.selectedAfdeling === '*' || v.afdeling === this.selectedAfdeling)
         .filter(v => this.selectedFunctie === '*' || v.functie === this.selectedFunctie);
+  }
+
+  private createSelectList(array: any[], property: string): string[] {
+    return this.distinct(array
+      .map(v => v[property])
+      .concat('*'))
+      .sort();
   }
 
   private distinct = function (array: any[]): any[] {
