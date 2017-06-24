@@ -1,3 +1,14 @@
-<p>
-  vacature-lijst-item works!
-</p>
+<h4 class="list-group-item-heading">
+  <span>{{vacature.functie}}</span> &nbsp; <span style="text-transform: uppercase" class="text-muted">{{vacature.afdeling}}</span></h4>
+<table class="table table-condensed table-info-detail">
+  <tbody>
+    <tr *ngIf="vacature.omschrijving !== ''">
+      <td class="info-detail-label">Omschrijving:</td>
+      <td class="info-detail-content">{{vacature.omschrijving}}</td>
+    </tr>
+    <tr *ngIf="vacature.nummer !== ''">
+      <td class="info-detail-label">Nummer:</td>
+      <td class="info-detail-content">{{vacature.nummer}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,3 +1,16 @@
-<p>
-  vacature-lijst works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="pull-left">Vacaturelijst</h3>
+    <div class="pull-right panel-heading-buttons">
+      <a href="#" class="btn btn-default btn-sm">Toevoegen</a>
+    </div>
+  </div>
+  <div *ngIf="vacatures.length === 0" class="panel-body">
+    <p>Geen vacatures gevonden voor huidige filterselectie.</p>
+  </div>
+  <ul *ngIf="vacatures.length !== 0" class="list-group">
+    <a *ngFor="let vacature of vacatures" href="#vacature-detail-{vacature.nummer}" class="list-group-item">
+      <app-vacature-lijst-item [vacature]="vacature"></app-vacature-lijst-item>
+    </a>
+  </ul>
+</div>

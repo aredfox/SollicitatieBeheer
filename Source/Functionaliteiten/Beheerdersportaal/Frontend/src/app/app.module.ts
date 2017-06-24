@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { RootComponent } from './shared/root/root.component';
 import { HeaderComponent } from './shared/layout/header/header.component';
@@ -22,7 +23,8 @@ import { VacatureDetailComponent } from './vacatures/vacature-detail/vacature-de
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [RootComponent]
