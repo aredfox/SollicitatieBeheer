@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Vacature } from '../vacature.model';
 
 @Component({
   selector: 'app-vacature-lijst',
@@ -7,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class VacatureLijstComponent {
   @Input()
-  vacatures: any[];
+  vacatures: Vacature[];
 
   constructor() { }
 }
