@@ -59,13 +59,20 @@ export class VacaturesComponent {
     this.zoekparameter = '';
     this.onFilter();
   }
-  onVacatureSelected(vacature: Vacature) {
+  onVacatureEdit(vacature: Vacature) {
     this.selectedVacature = vacature;
   }
   onVacatureSaved(vacature: Vacature) {
     this.selectedVacature = null;
     var index = this.vacatures.indexOf(vacature);
     this.vacatures[index] = vacature;
+    this.initSelectionLists();
+    this.initFilterArray(this.vacatures);
+  }
+  onVacatureDeleted(vacature: Vacature) {
+    this.selectedVacature = null;
+    var index = this.vacatures.indexOf(vacature);
+    this.vacatures.splice(index, 1);
     this.initSelectionLists();
     this.initFilterArray(this.vacatures);
   }

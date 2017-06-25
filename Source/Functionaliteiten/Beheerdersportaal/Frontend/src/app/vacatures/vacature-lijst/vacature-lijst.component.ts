@@ -10,11 +10,16 @@ export class VacatureLijstComponent {
   @Input()
   vacatures: Vacature[];
   @Output()
-  vacatureSelected = new EventEmitter<Vacature>();
+  vacatureEdit = new EventEmitter<Vacature>();
+  @Output()
+  vacatureDeleted = new EventEmitter<Vacature>();
 
   constructor() { }
 
-  onSelect(vacature: Vacature) {
-    this.vacatureSelected.emit(vacature);
+  onEdit(vacature: Vacature) {
+    this.vacatureEdit.emit(vacature);
+  }
+  onDelete(vacature: Vacature) {
+    this.vacatureDeleted.emit(vacature);
   }
 }

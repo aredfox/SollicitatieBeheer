@@ -2,8 +2,8 @@
   <span>{{vacature.functie}}</span> <span class="text-muted">{{vacature.afdeling}}</span>
 </h4>
 <div class="button-row pull-right">
-  <a class="btn btn-default btn-xs" title="Bewerken"><span class="fa fa-pencil"></span></a>
-  <a class="btn btn-danger btn-xs" title="Verwijderen"><span class="fa fa-remove"></span></a>
+  <a class="btn btn-default btn-xs" title="Bewerken" (click)="edit.emit()"><span class="fa fa-pencil"></span></a>
+  <a class="btn btn-danger btn-xs" title="Verwijderen" (click)="delete.emit()"><span class="fa fa-remove"></span></a>
 </div>
 <table class="table table-condensed table-info-detail">
   <tbody>

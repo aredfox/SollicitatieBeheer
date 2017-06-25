@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="col-lg-9">
-    <app-vacature-lijst [vacatures]="filteredVacatures" (vacatureSelected)="onVacatureSelected($event)"></app-vacature-lijst>
+    <app-vacature-lijst [vacatures]="filteredVacatures" (vacatureEdit)="onVacatureEdit($event)" (vacatureDeleted)="onVacatureDeleted($event)"></app-vacature-lijst>
   </div>
 </div>
 
