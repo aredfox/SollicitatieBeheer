@@ -1,3 +1,29 @@
-<p>
-  vacature-detail works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="pull-left">Vacature bewerken <span class="text-muted">{{vacature.functie}}</span> <span class="text-muted-more">{{vacature.afdeling}}</span></h3>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      <div class="form-group form-group-sm">
+        <label class="col-sm-3 control-label" for="afdeling">Afdeling</label>
+        <div class="col-sm-9">
+          <select class="form-control" id="afdeling" [(ngModel)]="vacature.afdeling" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let afdeling of afdelingen">{{afdeling}}</option>                
+              </select>
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="col-sm-3 control-label" for="functie">Functie</label>
+        <div class="col-sm-9">
+          <select class="form-control" id="functie" [(ngModel)]="vacature.functie" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let functie of functies">{{functie}}</option>                
+          </select>
+        </div>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-sm btn-default" (click)="onCancel()">Annuleren</a>
+        <a class="btn btn-sm btn-success" (click)="onSave()">Opslaan</a>
+      </div>
+    </form>
+  </div>
+</div>

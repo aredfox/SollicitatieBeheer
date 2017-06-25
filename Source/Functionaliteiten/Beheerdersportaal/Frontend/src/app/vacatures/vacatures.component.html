@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="row">
+<div *ngIf="!selectedVacature" class="row">
   <div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -45,6 +45,13 @@
     </div>
   </div>
   <div class="col-lg-9">
-    <app-vacature-lijst [vacatures]="filteredVacatures"></app-vacature-lijst>
+    <app-vacature-lijst [vacatures]="filteredVacatures" (vacatureSelected)="onVacatureSelected($event)"></app-vacature-lijst>
+  </div>
+</div>
+
+<div *ngIf="selectedVacature" class="row">
+  <div class="col-lg-12">
+    <app-vacature-detail [vacature]="selectedVacature" [afdelingen]="afdelingen.items" [functies]="functies.items" (cancelled)="selectedVacature = null"
+      (saved)="onVacatureSaved($event)"></app-vacature-detail>
   </div>
 </div>

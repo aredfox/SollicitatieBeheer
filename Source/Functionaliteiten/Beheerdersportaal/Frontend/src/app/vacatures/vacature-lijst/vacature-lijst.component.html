@@ -9,7 +9,7 @@
     <p>Geen vacatures gevonden voor huidige filterselectie.</p>
   </div>
   <ul *ngIf="vacatures.length !== 0" class="list-group">
-    <a *ngFor="let vacature of vacatures" href="#vacature-detail-{vacature.nummer}" class="list-group-item">
+    <a *ngFor="let vacature of vacatures" href="#vacature-detail-{vacature.nummer}" (click)="onSelect(vacature)" class="list-group-item">
       <app-vacature-lijst-item [vacature]="vacature"></app-vacature-lijst-item>
     </a>
   </ul>

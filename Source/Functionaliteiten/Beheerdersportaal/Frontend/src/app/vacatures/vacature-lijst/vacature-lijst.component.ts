@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Vacature } from '../vacature.model';
 
 @Component({
@@ -9,6 +9,12 @@ import { Vacature } from '../vacature.model';
 export class VacatureLijstComponent {
   @Input()
   vacatures: Vacature[];
+  @Output()
+  vacatureSelected = new EventEmitter<Vacature>();
 
   constructor() { }
+
+  onSelect(vacature: Vacature) {
+    this.vacatureSelected.emit(vacature);
+  }
 }

@@ -1,5 +1,5 @@
 export class SelectList<T> {
-    private constructor(
+    public constructor(
         public items: string[],
         public selectedItem: string)
     { }
