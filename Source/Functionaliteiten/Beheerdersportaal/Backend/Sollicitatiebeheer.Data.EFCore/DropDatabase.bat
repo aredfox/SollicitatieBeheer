@@ -5,13 +5,15 @@ cls
 echo -------------------------------------------------
 
 echo.
-echo   [ Update Database ]
+echo   [ Seed Database ]
 
 echo.
 echo   EF Core Feedback:
 echo.
 
-dotnet ef database update --startup-project ../Sollicitatiebeheer.Data.EFCore.Migrations
+cd ../Sollicitatiebeheer.Data.EFCore.Migrations 
+dotnet run drop
+cd ../Sollicitatiebeheer.Data.EFCore
 
 echo.
 echo -------------------------------------------------
