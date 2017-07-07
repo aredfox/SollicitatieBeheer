@@ -6,9 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Sollicitatiebeheer.Data.EFCore.Infrastructuur;
 using System;
 using System.Linq;
-using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.Collections.Generic;
 
 namespace Sollicitatiebeheer.Data.EFCore
 {
