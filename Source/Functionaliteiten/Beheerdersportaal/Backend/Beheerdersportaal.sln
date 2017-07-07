@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26621.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beheerdersportaal.Model", "Beheerdersportaal.Model\Beheerdersportaal.Model.csproj", "{0D168A92-3BF2-4D72-A8C5-B1FB7F78FA14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sollicitatiebeheer.Data.EFCore", "Sollicitatiebeheer.Data.EFCore\Sollicitatiebeheer.Data.EFCore.csproj", "{8FF31C9E-0807-48BE-A61D-F94FC807DB97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D168A92-3BF2-4D72-A8C5-B1FB7F78FA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D168A92-3BF2-4D72-A8C5-B1FB7F78FA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D168A92-3BF2-4D72-A8C5-B1FB7F78FA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D168A92-3BF2-4D72-A8C5-B1FB7F78FA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FF31C9E-0807-48BE-A61D-F94FC807DB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FF31C9E-0807-48BE-A61D-F94FC807DB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FF31C9E-0807-48BE-A61D-F94FC807DB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FF31C9E-0807-48BE-A61D-F94FC807DB97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D443D219-E1B5-41E6-9508-8FBDA566237B}
+	EndGlobalSection
+EndGlobal
