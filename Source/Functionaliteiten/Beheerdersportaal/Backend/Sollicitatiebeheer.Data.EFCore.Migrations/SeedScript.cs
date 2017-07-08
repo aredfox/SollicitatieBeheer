@@ -23,6 +23,8 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
             SeedVacatures();
         }
 
+        private void Seed<T>(params T[] entiteiten) where T : class, IEntiteit
+            => Seed(entiteiten.ToList());
         private void Seed<T>(List<T> entiteiten) where T : class, IEntiteit
         {
             if (entiteiten == null && entiteiten.Any())
@@ -37,7 +39,8 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
 
         private void SeedAfdelingen()
         {
-            Seed(new List<Afdeling> {
+            Seed
+            (
                 new Afdeling { Naam = "OOOC Potgieter" },
                 new Afdeling { Naam = "OOOC Jacob Jordaens" },
                 new Afdeling { Naam = "OOOC Harmonie" },
@@ -45,26 +48,28 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
                 new Afdeling { Naam = "Personeelsdienst" },
                 new Afdeling { Naam = "Administratie" },
                 new Afdeling { Naam = "Boekhouding" },
-                new Afdeling { Naam = "Technische dienst" },
-            });            
+                new Afdeling { Naam = "Technische dienst" }
+            );            
         }
 
         private void SeedFuncties()
         {
-            Seed(new List<Functie> {
+            Seed
+            (
                 new Functie { Naam = "Begeleider" },
                 new Functie { Naam = "Nachtbegeleider" },
                 new Functie { Naam = "Maatschappelijk assistent" },
                 new Functie { Naam = "Ombudsman/vrouw" },
                 new Functie { Naam = "Administratief medewerker" },
                 new Functie { Naam = "Poetshulp" },
-                new Functie { Naam = "Klusjesman" },
-            });            
+                new Functie { Naam = "Klusjesman" }
+            );            
         }
 
         private void SeedVacatures()
         {
-            Seed(new List<Vacature> {
+            Seed
+            (
                 new Vacature {
                     Nummer = 56120663,
                     Functie = _database.Functies.Where(x => x.Naam == "Begeleider").Single(),
@@ -89,7 +94,7 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
                     Afdeling = _database.Afdelingen.Where(x => x.Naam == "OOOC Harmonie").Single(),
                     Omschrijving = @"Binnen de voorziening heb je een verantwoordelijke functie op vlak van administratie, dossierkennis, -opbouw en –beheer. Je bent ook verantwoordelijk voor de opbouw van contacten tussen de jongere en zijn gezin binnen de residentiele dossiers."
                 }
-            });            
+            );            
         }        
     }
 }
