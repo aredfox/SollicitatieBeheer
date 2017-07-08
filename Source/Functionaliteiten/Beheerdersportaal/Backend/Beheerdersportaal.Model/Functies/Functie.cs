@@ -4,6 +4,6 @@ namespace Beheerdersportaal.Model.Functies
 {
     public class Functie : ArchiveerbareEntiteit<int>
     {
-        public string Naame { get; set; }
+        public string Naam { get; set; }
     }
 }

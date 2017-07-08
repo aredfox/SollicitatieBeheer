@@ -5,15 +5,13 @@ cls
 echo -------------------------------------------------
 
 echo.
-echo   [ Seed database ]
+echo   [ Remove previous migration ]
 
 echo.
 echo   EF Core Feedback:
 echo.
 
-cd ../Sollicitatiebeheer.Data.EFCore.Migrations 
-dotnet run seed
-cd ../Sollicitatiebeheer.Data.EFCore
+dotnet ef migrations remove --startup-project ../Sollicitatiebeheer.Data.EFCore.Migrations
 
 echo.
 echo -------------------------------------------------

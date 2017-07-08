@@ -5,7 +5,7 @@ cls
 echo -------------------------------------------------
 
 echo.
-echo   [ Seed Database ]
+echo   [ Drop database ]
 
 echo.
 echo   EF Core Feedback:

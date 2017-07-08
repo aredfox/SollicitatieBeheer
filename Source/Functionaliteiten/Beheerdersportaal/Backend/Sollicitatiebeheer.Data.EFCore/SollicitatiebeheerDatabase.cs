@@ -23,7 +23,7 @@ namespace Sollicitatiebeheer.Data.EFCore
             base.OnModelCreating(modelBuilder);
             
             ConfigureerIdentityColumns(modelBuilder);
-            ConfigureerArchiveerbareEntiteiten(modelBuilder);
+            //ConfigureerArchiveerbareEntiteiten(modelBuilder);
 
             modelBuilder.Entity<Vacature>(v =>
             {
@@ -35,7 +35,16 @@ namespace Sollicitatiebeheer.Data.EFCore
         private void ConfigureerIdentityColumns(ModelBuilder modelBuilder)
         {
             this.GeefAlleDbSetTypes().ToList()
-                .ForEach(t => UseSqlServerIdentityColumnVoor(t, modelBuilder));
+                .ForEach(t => {
+                    Console.WriteLine($"Mapping type '{t.Name.ToString()}'.");                    
+
+                    if (typeof(IEntiteit).IsAssignableFrom(t))
+                    {
+                        Console.WriteLine($" Type '{t.Name.ToString()}' is IEntiteit.");
+                        modelBuilder.Entity(t, e => e.HasKey("Id"));
+                        UseSqlServerIdentityColumnVoor(t, modelBuilder);
+                    }
+                });
         }
         private void ConfigureerArchiveerbareEntiteiten(ModelBuilder modelBuilder)
         {
@@ -44,7 +53,7 @@ namespace Sollicitatiebeheer.Data.EFCore
         }
         private void UseSqlServerIdentityColumnVoor(Type type, ModelBuilder modelBuilder)
         {
-            if (type is IEntiteit<int> || type is IEntiteit<long>)
+            if (typeof(IEntiteit<int>).IsAssignableFrom(type) || typeof(IEntiteit<long>).IsAssignableFrom(type))
             {
                 modelBuilder.Entity(type, e =>
                 {
