@@ -6,7 +6,7 @@ namespace Beheerdersportaal.Model.Vacatures
 {
     public class Vacature : ArchiveerbareEntiteit<int>
     {
-        public int Nummer { get; set; }
+        public long Nummer { get; set; }
         public Functie Functie { get; set; }
         public int FunctieId { get; set; }
         public Afdeling Afdeling { get; set; }

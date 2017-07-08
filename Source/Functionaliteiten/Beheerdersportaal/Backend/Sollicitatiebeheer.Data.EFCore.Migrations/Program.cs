@@ -19,7 +19,7 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
                     break;
 
                 case "seed":
-                    program.DropDatabase();
+                    program.SeedDatabase();
                     break;                
             }                
         }
@@ -47,7 +47,8 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
             {
                 using (var db = MaakDatabase())
                 {
-                    // Todo
+                    var seeder = new SeedScript(db);
+                    seeder.Start();
                 }
                 Console.WriteLine("Database seeded.");
             }

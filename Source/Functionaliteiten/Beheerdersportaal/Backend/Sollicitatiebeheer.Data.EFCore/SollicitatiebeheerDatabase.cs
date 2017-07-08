@@ -11,7 +11,7 @@ namespace Sollicitatiebeheer.Data.EFCore
 {
     public class SollicitatiebeheerDatabase : DbContext
     {
-        public DbSet<Afdeling> Afdeling { get; set; }
+        public DbSet<Afdeling> Afdelingen { get; set; }
         public DbSet<Functie> Functies { get; set; }
         public DbSet<Vacature> Vacatures { get; set; }
 
