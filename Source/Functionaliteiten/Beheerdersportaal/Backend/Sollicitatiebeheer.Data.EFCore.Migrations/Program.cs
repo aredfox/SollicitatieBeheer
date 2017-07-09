@@ -61,7 +61,7 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
 
         private static SollicitatiebeheerDatabase MaakDatabase()
         {
-            var migrationsDbContextFactory = new MigrationsDbContextFactory();
+            var migrationsDbContextFactory = new DefaultDbContextFactory();
             return migrationsDbContextFactory.CreateDbContext(null);
         }
     }

@@ -15,8 +15,13 @@ namespace Sollicitatiebeheer.Data.EFCore
         public DbSet<Functie> Functies { get; set; }
         public DbSet<Vacature> Vacatures { get; set; }
 
+        public SollicitatiebeheerDatabase() 
+            : this(new DefaultDbContextFactory().CreateDefaultOptions()) { }
         public SollicitatiebeheerDatabase(DbContextOptions<SollicitatiebeheerDatabase> options)
             : base(options) { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseSqlServer(new DefaultDbContextFactory().GetConnectionString());
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
