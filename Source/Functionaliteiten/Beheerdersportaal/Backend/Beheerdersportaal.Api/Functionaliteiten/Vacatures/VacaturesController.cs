@@ -13,8 +13,17 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
             _mediator = mediator;
         }
 
+        [Route("")]
         [HttpGet]
         public async Task<IActionResult> LijstVacaturesOp(LijstVacaturesOp.Request request) {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [Route("update")]
+        [HttpPost]
+        public async Task<IActionResult> WijzigVacature(WijzigVacature.Request request)
+        {
             var response = await _mediator.Send(request);
             return Ok(response);
         }

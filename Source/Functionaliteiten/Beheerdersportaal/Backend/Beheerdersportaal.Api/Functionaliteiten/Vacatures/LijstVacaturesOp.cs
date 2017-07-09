@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sollicitatiebeheer.Data.EFCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,6 +28,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
                 {
                     Vacatures = vacatures.Select(vacature => new Vacature
                     {
+                        Id = vacature.Id,
                         Nummer = vacature.Nummer,
                         Functie = vacature.Functie.Naam,
                         Afdeling = vacature.Afdeling.Naam,
