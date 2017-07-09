@@ -13,7 +13,7 @@ import { VacaturesDataService } from '../shared/services/vacatures.data.service'
 })
 export class VacaturesComponent {
   vacatures: Vacature[] = [];
-  selectedVacature: Vacature = <Vacature>{};
+  selectedVacature: Vacature;
 
   filteredVacatures: Vacature[];
   zoekparameter: string = '';
@@ -29,18 +29,22 @@ export class VacaturesComponent {
       this.vacatures = vs;
       this.initSelectionLists();
       this.initFilterArray(this.vacatures);
+    }).catch(error => {
+      alert(`Could not load data from server. Falling back to dummy/test data. Error: '${error}'.`);
+      this.vacatures = [
+        { nummer: 15486, functie: 'Begeleider (m/v)', afdeling: 'OOOC Potgieter', omschrijving: '' },
+        { nummer: 15492, functie: 'Begeleider (m/v)', afdeling: 'OOOC Jacob Jordaens', omschrijving: 'Et harum quidem rerum facilis est et expedita distinctio.' },
+        { nummer: 15512, functie: 'Klusjesman', afdeling: 'Technische Dienst', omschrijving: '' },
+        { nummer: 15520, functie: 'Ombuds', afdeling: 'Personeelsdienst', omschrijving: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.' },
+        { nummer: 15584, functie: 'Tuinman', afdeling: 'Technische Dienst', omschrijving: '' },
+        { nummer: 15624, functie: 'Nachtbegeleider (m/v)', afdeling: 'OOOC Potgieter', omschrijving: 'Je staat in voor de begeleiding van minderjarigen in onze orthopedagogische residentie volgens een volcontinu systeem.' },
+        { nummer: 15637, functie: 'Begeleider (m/v)', afdeling: 'OOOC Jacob Jordaens', omschrijving: 'Et harum quidem rerum facilis est et expedita distinctio.' },
+        { nummer: 15639, functie: 'Schoonmaak', afdeling: 'Technische Dienst', omschrijving: '' },
+        { nummer: 15658, functie: 'Maatschappelijk Assistent (m/v)', afdeling: 'OOOC Harmonie', omschrijving: 'Je concentreert je binnen de voorziening op het thuismilieu van de jongere. Via gesprekken, huisbezoeken en vragenlijsten ga je samen met het cliëntsysteem op zoek naar hun sterke punten en hun werkpunten. Je legt ook contacten met significante derden (vorige hulpverlening, familieleden, OCMW,…). Je bundelt al deze informatie en legt deze samen met de informatie van de andere leden van het Multidisciplinair team. Je werkt mee aan het proces van adviesvorming en kan daarna jouw informatie in een degelijk diagnostisch verslag formuleren. Binnen de voorziening heb je een verantwoordelijke functie op vlak van administratie, dossierkennis, -opbouw en –beheer. Je bent ook verantwoordelijk voor de opbouw van contacten tussen de jongere en zijn gezin binnen de residentiele dossiers.' },
+      ];
+      this.initSelectionLists();
+      this.initFilterArray(this.vacatures);
     });
-    /*this.vacatures = [
-      { nummer: 15486, functie: 'Begeleider (m/v)', afdeling: 'OOOC Potgieter', omschrijving: '' },
-      { nummer: 15492, functie: 'Begeleider (m/v)', afdeling: 'OOOC Jacob Jordaens', omschrijving: 'Et harum quidem rerum facilis est et expedita distinctio.' },
-      { nummer: 15512, functie: 'Klusjesman', afdeling: 'Technische Dienst', omschrijving: '' },
-      { nummer: 15520, functie: 'Ombuds', afdeling: 'Personeelsdienst', omschrijving: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.' },
-      { nummer: 15584, functie: 'Tuinman', afdeling: 'Technische Dienst', omschrijving: '' },
-      { nummer: 15624, functie: 'Nachtbegeleider (m/v)', afdeling: 'OOOC Potgieter', omschrijving: 'Je staat in voor de begeleiding van minderjarigen in onze orthopedagogische residentie volgens een volcontinu systeem.' },
-      { nummer: 15637, functie: 'Begeleider (m/v)', afdeling: 'OOOC Jacob Jordaens', omschrijving: 'Et harum quidem rerum facilis est et expedita distinctio.' },
-      { nummer: 15639, functie: 'Schoonmaak', afdeling: 'Technische Dienst', omschrijving: '' },
-      { nummer: 15658, functie: 'Maatschappelijk Assistent (m/v)', afdeling: 'OOOC Harmonie', omschrijving: 'Je concentreert je binnen de voorziening op het thuismilieu van de jongere. Via gesprekken, huisbezoeken en vragenlijsten ga je samen met het cliëntsysteem op zoek naar hun sterke punten en hun werkpunten. Je legt ook contacten met significante derden (vorige hulpverlening, familieleden, OCMW,…). Je bundelt al deze informatie en legt deze samen met de informatie van de andere leden van het Multidisciplinair team. Je werkt mee aan het proces van adviesvorming en kan daarna jouw informatie in een degelijk diagnostisch verslag formuleren. Binnen de voorziening heb je een verantwoordelijke functie op vlak van administratie, dossierkennis, -opbouw en –beheer. Je bent ook verantwoordelijk voor de opbouw van contacten tussen de jongere en zijn gezin binnen de residentiele dossiers.' },
-    ];*/
   }
 
   initSelectionLists() {
