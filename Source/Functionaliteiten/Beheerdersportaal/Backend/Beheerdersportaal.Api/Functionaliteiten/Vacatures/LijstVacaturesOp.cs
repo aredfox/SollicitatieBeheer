@@ -15,8 +15,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
 
             public Handler(SollicitatiebeheerDatabase sollicitatiebeheerDatabase)
             {                
-                _db = sollicitatiebeheerDatabase;
-                Console.WriteLine(_db == null ? "_db == NULL" : $"_db != null // {_db}");
+                _db = sollicitatiebeheerDatabase;                
             }
 
             public Response Handle(Request message)

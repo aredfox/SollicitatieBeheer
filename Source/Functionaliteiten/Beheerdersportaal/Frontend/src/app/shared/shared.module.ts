@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ObjectService } from './services/utilities/object.service';
 import { SearchService } from './services/utilities/search.service';
+import { VacaturesDataService } from './services/vacatures.data.service';
 
 @NgModule({
     imports: [
@@ -10,7 +11,8 @@ import { SearchService } from './services/utilities/search.service';
     ],
     providers: [
         ObjectService,
-        SearchService
+        SearchService,
+        VacaturesDataService
     ]
 })
 export class SharedModule { }

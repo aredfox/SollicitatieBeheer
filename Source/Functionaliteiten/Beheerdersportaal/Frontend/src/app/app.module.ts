@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpModule, JsonpModule } from '@angular/http';
+
 import { RootComponent } from './root/root.component';
 
 import { SharedModule } from './shared/shared.module';
@@ -13,6 +15,8 @@ import { VacaturesModule } from './vacatures/vacatures.module';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    JsonpModule,
     SharedModule,
     LayoutModule,
     VacaturesModule

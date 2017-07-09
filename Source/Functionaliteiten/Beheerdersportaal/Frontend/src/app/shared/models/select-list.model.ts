@@ -9,6 +9,11 @@ export class SelectList<T> {
         let selectList = new SelectList<T>(items, selectedItem);
         return selectList;
     }
+    public static createEmptySelectList<T>(selectedItem: string = '*'): SelectList<T> {
+        const items = this.createSelectListItems([], x => x);
+        let selectList = new SelectList<T>(items, selectedItem);
+        return selectList;
+    }
 
     private static createSelectListItems<T, TResult>(array: T[], propertySelector: (x: T) => TResult | string): TResult[] {
         return this.distinct(array

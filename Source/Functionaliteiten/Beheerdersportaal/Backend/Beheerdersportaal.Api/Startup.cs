@@ -12,6 +12,7 @@ namespace Beheerdersportaal.Api
     {        
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddDbContext<SollicitatiebeheerDatabase>(
                 ctx => ctx.UseSqlServer(new DefaultDbContextFactory().GetConnectionString()));
             services.AddMediatR();
@@ -25,6 +26,15 @@ namespace Beheerdersportaal.Api
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                builder.AllowCredentials();
+                builder.WithOrigins("http://localhost:4200");                
+            });
+            
             app
                 .UseMvc();
         }
