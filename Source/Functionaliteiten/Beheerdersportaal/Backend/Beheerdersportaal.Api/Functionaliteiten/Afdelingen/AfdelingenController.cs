@@ -3,18 +3,19 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
+namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
 {
     [Route("api/[controller]")]
-    public class VacaturesController : BaseController
+    public class AfdelingenController : BaseController
     {
-        public VacaturesController(IMediator mediator) 
+        public AfdelingenController(IMediator mediator) 
             : base(mediator) { }
 
         [HttpGet]
-        public async Task<IActionResult> Get(GetVacactures.Request request) {
+        public async Task<IActionResult> Get(GetAfdelingen.Request request)
+        {
             var response = await _mediator.Send(request);
             return Ok(response);
-        }        
+        }
     }
 }

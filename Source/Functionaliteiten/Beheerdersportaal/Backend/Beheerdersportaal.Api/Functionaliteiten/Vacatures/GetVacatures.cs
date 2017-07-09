@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Beheerdersportaal.Api.Infrastructuur.Handlers;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sollicitatiebeheer.Data.EFCore;
 using System.Collections.Generic;
@@ -6,18 +7,14 @@ using System.Linq;
 
 namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
 {
-    public class LijstVacaturesOp
+    public class GetVacactures
     {
-        public class Handler : IRequestHandler<Request, Response>
+        public class Handler : DbRequestHandler<SollicitatiebeheerDatabase, Request, Response>
         {
-            private readonly SollicitatiebeheerDatabase _db;
+            public Handler(SollicitatiebeheerDatabase database)
+                : base(database) { }
 
-            public Handler(SollicitatiebeheerDatabase sollicitatiebeheerDatabase)
-            {                
-                _db = sollicitatiebeheerDatabase;                
-            }
-
-            public Response Handle(Request message)
+            public override Response Handle(Request message)
             {
                 var vacatures = _db.Vacatures
                     .Include(x => x.Functie)
