@@ -27,7 +27,10 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
                             (afdelingFilter != -1 ? x.AfdelingId == afdelingFilter : true)
                          && (functieFilter != -1 ? x.FunctieId == functieFilter : true)
                     )
-                    .ToList();                
+                    .ToList();
+
+                if (vacatures.Count == 0)
+                    return null;
 
                 return new Response
                 {

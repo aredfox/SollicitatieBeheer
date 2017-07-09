@@ -17,7 +17,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
         public async Task<IActionResult> Get(GetAfdelingen.Request request)
         {
             var response = await _mediator.Send(request);
-            return Ok(response);
+            return ToWebResponse(response);            
         }
 
         [HttpGet]
@@ -26,7 +26,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
         {
             var request = new GetVacatures.Request { Afdeling = afdeling };
             var response = await _mediator.Send(request);
-            return Ok(response);
+            return ToWebResponse(response);
         }
     }
 }

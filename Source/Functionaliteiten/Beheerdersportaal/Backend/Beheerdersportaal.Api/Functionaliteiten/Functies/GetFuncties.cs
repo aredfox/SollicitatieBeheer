@@ -18,6 +18,9 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Functies
                 var functies = _db.Functies                    
                     .ToList();
 
+                if (functies.Count == 0)
+                    return null;
+
                 return new Response
                 {
                     Functies = functies.Select(functie => new Functie

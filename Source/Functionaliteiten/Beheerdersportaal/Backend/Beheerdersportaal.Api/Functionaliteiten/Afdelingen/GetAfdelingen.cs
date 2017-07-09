@@ -18,6 +18,9 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
                 var afdelingen = _db.Afdelingen                    
                     .ToList();
 
+                if (afdelingen.Count == 0)
+                    return null;
+
                 return new Response
                 {
                     Afdelingen = afdelingen.Select(functie => new Afdeling

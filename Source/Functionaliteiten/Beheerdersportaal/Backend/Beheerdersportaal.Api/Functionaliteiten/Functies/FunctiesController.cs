@@ -17,7 +17,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Functies
         {
             var request = new GetFuncties.Request();
             var response = await _mediator.Send(request);
-            return Ok(response);
+            return ToWebResponse(response);
         }
 
         [HttpGet]
@@ -26,7 +26,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Functies
         {
             var request = new GetVacatures.Request { Functie = functie };
             var response = await _mediator.Send(request);
-            return Ok(response);
+            return ToWebResponse(response);
         }
     }
 }
