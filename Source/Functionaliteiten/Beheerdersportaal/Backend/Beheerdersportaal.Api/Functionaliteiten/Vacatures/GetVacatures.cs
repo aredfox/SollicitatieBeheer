@@ -2,12 +2,13 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Sollicitatiebeheer.Data.EFCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
 {
-    public class GetVacactures
+    public class GetVacatures
     {
         public class Handler : DbRequestHandler<SollicitatiebeheerDatabase, Request, Response>
         {
@@ -15,10 +16,17 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
                 : base(database) { }
 
             public override Response Handle(Request message)
-            {
+            {                
+                var afdelingFilter = message.Afdeling ?? -1;
+                var functieFilter = message.Functie ?? -1;
+
                 var vacatures = _db.Vacatures
                     .Include(x => x.Functie)
-                    .Include(x => x.Afdeling)
+                    .Include(x => x.Afdeling)                    
+                    .Where(x =>                                            
+                            (afdelingFilter != -1 ? x.AfdelingId == afdelingFilter : true)
+                         && (functieFilter != -1 ? x.FunctieId == functieFilter : true)
+                    )
                     .ToList();                
 
                 return new Response
@@ -34,7 +42,11 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
                 };
             }
         }
-        public class Request : IRequest<Response> { }
+        public class Request : IRequest<Response>
+        {
+            public int? Afdeling { get; set; }
+            public int? Functie { get; set; }
+        }
         public class Response {
             public List<Vacature> Vacatures { get; set; }
         }

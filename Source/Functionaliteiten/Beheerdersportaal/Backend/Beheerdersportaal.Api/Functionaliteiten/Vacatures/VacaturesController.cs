@@ -12,7 +12,8 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
             : base(mediator) { }
 
         [HttpGet]
-        public async Task<IActionResult> Get(GetVacactures.Request request) {
+        public async Task<IActionResult> Get() {
+            var request = new GetVacatures.Request();
             var response = await _mediator.Send(request);
             return Ok(response);
         }        
