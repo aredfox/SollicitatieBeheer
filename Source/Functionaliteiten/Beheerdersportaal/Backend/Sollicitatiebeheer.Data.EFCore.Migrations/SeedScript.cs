@@ -38,9 +38,9 @@ namespace Sollicitatiebeheer.Data.EFCore.Migrations
         }
 
         private void SeedAfdelingen()
-        {
+        {            
             Seed
-            (
+            (                
                 new Afdeling { Naam = "OOOC Potgieter" },
                 new Afdeling { Naam = "OOOC Jacob Jordaens" },
                 new Afdeling { Naam = "OOOC Harmonie" },

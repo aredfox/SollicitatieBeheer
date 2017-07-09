@@ -11,7 +11,7 @@ using System;
 namespace Sollicitatiebeheer.Data.EFCore.Migrations
 {
     [DbContext(typeof(SollicitatiebeheerDatabase))]
-    [Migration("20170708221926_Initial")]
+    [Migration("20170708222614_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
