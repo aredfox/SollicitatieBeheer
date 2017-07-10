@@ -6,8 +6,8 @@ namespace Beheerdersportaal.Api.Infrastructuur.Controllers
 {
     public abstract class BaseController : Controller
     {
-        protected readonly IMediator _mediator;
-        public BaseController(IMediator mediator) => _mediator = mediator;
+        public IMediator Mediator { get; set; }
+
         protected IActionResult ToWebResponse<TResponse>(TResponse response) 
         {
             if (response == null)
