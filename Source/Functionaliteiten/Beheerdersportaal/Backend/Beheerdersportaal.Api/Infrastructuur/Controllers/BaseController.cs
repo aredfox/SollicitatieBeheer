@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Beheerdersportaal.Api.Infrastructuur.Handlers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -8,13 +9,26 @@ namespace Beheerdersportaal.Api.Infrastructuur.Controllers
     {
         public IMediator Mediator { get; set; }
 
-        protected IActionResult ToWebResponse<TResponse>(TResponse response) 
+        protected IActionResult ToWebResponse<TResponse>(TResponse response)
+            where TResponse : BaseResponse
         {
             if (response == null)
-                return NotFound();
+            {
+                var baseResponse = new BaseResponse {
+                    HasSucceeded = false,
+                    Error = "Niet gevonden"
+                };
+                return NotFound(baseResponse);
+            }
 
             if (response is Exception exception)
-                return BadRequest(exception.Message);
+            {
+                var baseResponse = new BaseResponse {
+                    HasSucceeded = false,
+                    Error = exception.Message
+                };
+                return BadRequest(baseResponse);
+            }            
 
             return Ok(response);
         }

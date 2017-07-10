@@ -31,8 +31,8 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Functies
                 };
             }            
         }
-        public class Request : IRequest<Response> { }
-        public class Response
+        public class Request : BaseRequest<Response> { }
+        public class Response : BaseResponse
         {
             public List<Functie> Functies { get; set; }
         }

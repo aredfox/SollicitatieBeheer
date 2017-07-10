@@ -45,12 +45,12 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Vacatures
                 };
             }
         }
-        public class Request : IRequest<Response>
+        public class Request : BaseRequest<Response>
         {
             public int? Afdeling { get; set; }
             public int? Functie { get; set; }
         }
-        public class Response {
+        public class Response : BaseResponse {
             public List<Vacature> Vacatures { get; set; }
         }
     }
