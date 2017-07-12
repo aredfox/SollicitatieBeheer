@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OdeToCode.AddFeatureFolders;
 using Sollicitatiebeheer.Data.EFCore;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -21,6 +22,7 @@ namespace Beheerdersportaal.Api
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            // MIDDLEWARE
             services.AddCors();
             services.AddDbContext<SollicitatiebeheerDatabase>(
                 ctx => ctx.UseSqlServer(new DefaultDbContextFactory().GetConnectionString()));
@@ -32,7 +34,13 @@ namespace Beheerdersportaal.Api
                 {
                     FeatureFolderName = nameof(Beheerdersportaal.Api.Functionaliteiten)                    
                 });
+            services.AddSwaggerGen(config =>
+            {
+                config.SwaggerDoc("v1", new Info { Title = "Sollicitatiebeheer API", Version = "v1" });
+            });
 
+
+            // DI
             var builder = new ContainerBuilder();
             builder.Populate(services);
 
@@ -57,8 +65,11 @@ namespace Beheerdersportaal.Api
                 builder.AllowCredentials();
                 builder.WithOrigins("http://localhost:4200");                
             });
-            
-            app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sollicitatiebeheer API v1"); });
+
+            app.UseMvc();            
         }
     }
 }
