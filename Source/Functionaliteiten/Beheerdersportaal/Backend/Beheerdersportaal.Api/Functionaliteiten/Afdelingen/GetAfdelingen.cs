@@ -5,15 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
-{
-    public class GetAfdelingen
-    {
-        public class Handler : DbRequestHandler<SollicitatiebeheerDatabase, Request, Response>
+{    
+        public class Handler : DbRequestHandler<SollicitatiebeheerDatabase, GetAfdelingenRequest, GetAfdelingenResponse>
         {            
             public Handler(SollicitatiebeheerDatabase database)
                 : base(database) { }
 
-            public override Response Handle(Request message)
+            public override GetAfdelingenResponse Handle(GetAfdelingenRequest message)
             {
                 var afdelingen = _db.Afdelingen                    
                     .ToList();
@@ -21,7 +19,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
                 if (afdelingen.Count == 0)
                     return null;
 
-                return new Response
+                return new GetAfdelingenResponse
                 {
                     Afdelingen = afdelingen.Select(functie => new Afdeling
                     {
@@ -31,10 +29,9 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
                 };
             }
         }
-        public class Request : BaseRequest<Response> { }
-        public class Response : BaseResponse
+        public class GetAfdelingenRequest : BaseRequest<GetAfdelingenResponse> { }
+        public class GetAfdelingenResponse : BaseResponse
         {
             public List<Afdeling> Afdelingen { get; set; }
-        }
-    }
+        }    
 }

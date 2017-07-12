@@ -37,6 +37,7 @@ namespace Beheerdersportaal.Api
             services.AddSwaggerGen(config =>
             {
                 config.SwaggerDoc("v1", new Info { Title = "Sollicitatiebeheer API", Version = "v1" });
+                config.DescribeAllEnumsAsStrings();                
             });
 
 
@@ -66,8 +67,10 @@ namespace Beheerdersportaal.Api
                 builder.WithOrigins("http://localhost:4200");                
             });
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sollicitatiebeheer API v1"); });
+            app.UseSwagger();            
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sollicitatiebeheer API v1");                
+            });
 
             app.UseMvc();            
         }

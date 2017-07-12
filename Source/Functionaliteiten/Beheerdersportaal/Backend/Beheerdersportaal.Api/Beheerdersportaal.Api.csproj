@@ -14,6 +14,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Scripts\Templates\Requests.tst" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -35,6 +39,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Beheerdersportaal.Model\Beheerdersportaal.Model.csproj" />
     <ProjectReference Include="..\Sollicitatiebeheer.Data.EFCore\Sollicitatiebeheer.Data.EFCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Scripts\Templates\BaseResponse.ts">
+      <CustomToolNamespace>Infrastructuur\Handlers\BaseResponse.cs</CustomToolNamespace>
+    </None>
+    <None Update="Scripts\Templates\GetAfdelingen.ts">
+      <CustomToolNamespace>Functionaliteiten\Afdelingen\GetAfdelingen.cs</CustomToolNamespace>
+    </None>
   </ItemGroup>
 
 </Project>

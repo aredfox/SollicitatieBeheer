@@ -9,7 +9,7 @@ namespace Beheerdersportaal.Api.Functionaliteiten.Afdelingen
     public class AfdelingenController : BaseController
     {
         [HttpGet]
-        public async Task<IActionResult> Get(GetAfdelingen.Request request)
+        public async Task<IActionResult> Get(GetAfdelingen.GetAfdelingenRequest request)
         {
             var response = await Mediator.Send(request);
             return ToWebResponse(response);            
